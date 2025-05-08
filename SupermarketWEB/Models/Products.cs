@@ -2,7 +2,7 @@
 
 namespace SupermarketWEB.Models
 {
-    public class Product
+    public class Products
     {
         // [Key] -> Anotación si la propiedad no se llama Id, ejemplo ProductId
         public int Id { get; set; } // Será la llave priamaria
