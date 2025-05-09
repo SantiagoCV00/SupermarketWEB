@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using SupermarketWEB.Data;
 using SupermarketWEB.Models;
 
-namespace SupermarketWEB.Pages.Products
+namespace SupermarketWEB.Pages.Provider
 {
     public class EditModel : PageModel
     {
@@ -15,23 +15,23 @@ namespace SupermarketWEB.Pages.Products
         }
 
         [BindProperty]
-        public Models.Products Products { get; set; } = default!;
+        public Models.Provider Provider { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Products == null)
+            if (id == null || _context.Providers == null)
             {
                 return NotFound();
             }
 
-            var product = await _context.Products.FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
+            var provider = await _context.Providers.FirstOrDefaultAsync(m => m.Id == id);
+            if (provider == null)
             {
                 return NotFound();
             }
             else
             {
-                Products = product;
+                Provider = provider;
                 return Page();
             }
         }
@@ -43,7 +43,7 @@ namespace SupermarketWEB.Pages.Products
                 return Page();
             }
 
-            _context.Attach(Products).State = EntityState.Modified;
+            _context.Attach(Provider).State = EntityState.Modified;
 
             try
             {
@@ -51,7 +51,7 @@ namespace SupermarketWEB.Pages.Products
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductsExists(Products.Id))
+                if (!ProviderExists(Provider.Id))
                 {
                     return NotFound();
                 }
@@ -64,9 +64,9 @@ namespace SupermarketWEB.Pages.Products
             return RedirectToPage("./Index");
         }
 
-        private bool ProductsExists(int id)
+        private bool ProviderExists(int id)
         {
-            return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Providers?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

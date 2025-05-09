@@ -5,7 +5,7 @@ namespace SupermarketWEB.Models
     public class Products
     {
         // [Key] -> Anotación si la propiedad no se llama Id, ejemplo ProductId
-        public int Id { get; set; } // Será la llave priamaria
+        public int Id { get; set; } // Será la llave primaria
         public string Name { get; set; }
 
         [Column(TypeName = "decimal(6,2)")]
