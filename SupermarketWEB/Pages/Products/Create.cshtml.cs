@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using SupermarketWEB.Data;
 using SupermarketWEB.Models;
 
-namespace SupermarketWEB.Pages.Products
+namespace SupermarketWEB.Pages.Product
 {
     public class CreateModel : PageModel
     {
@@ -18,14 +18,14 @@ namespace SupermarketWEB.Pages.Products
             return Page();
         }
         [BindProperty]
-        public Models.Products Products { get; set; } = default!;
+        public Models.Product Product { get; set; } = default!;
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid || _context.Products == null || Products == null)
+            if (!ModelState.IsValid || _context.Products == null || Product == null)
             {
                 return Page();
             }
-            _context.Products.Add(Products);
+            _context.Products.Add(Product);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

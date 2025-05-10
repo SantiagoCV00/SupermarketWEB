@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using SupermarketWEB.Data;
 using SupermarketWEB.Models;
 
-namespace SupermarketWEB.Pages.Products
+namespace SupermarketWEB.Pages.Product
 {
     public class DeleteModel : PageModel
     {
@@ -14,7 +14,7 @@ namespace SupermarketWEB.Pages.Products
             _context = context;
         }
         [BindProperty]
-        public Models.Products Products { get; set; } = default!;
+        public Models.Product Product { get; set; } = default!;
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null || _context.Products == null)
@@ -28,7 +28,7 @@ namespace SupermarketWEB.Pages.Products
             }
             else
             {
-                Products = products;
+                Product = products;
                 return Page();
             }
         }
@@ -42,8 +42,8 @@ namespace SupermarketWEB.Pages.Products
 
             if (products != null)
             {
-                Products = products;
-                _context.Products.Remove(products);
+                Product = products;
+                _context.Products.Remove(Product);
                 await _context.SaveChangesAsync();
             }
 

@@ -1,5 +1,5 @@
 ﻿@page
-@model SupermarketWEB.Pages.Products.CreateModel
+@model SupermarketWEB.Pages.Product.CreateModel
 @{
     ViewData["Title"] = "Create Product";
 }
@@ -13,19 +13,24 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Products.Name" class="control-label"></label>
-                <input asp-for="Products.Name" class="form-control" />
-                <span asp-validation-for="Products.Name" class="text-danger"></span>
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Products.Price" class="control-label"></label>
-                <input asp-for="Products.Price" class="form-control" />
-                <span asp-validation-for="Products.Price" class="text-danger"></span>
+                <label asp-for="Product.Price" class="control-label"></label>
+                <input asp-for="Product.Price" class="form-control" />
+                <span asp-validation-for="Product.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Products.Stock" class="control-label"></label>
-                <input asp-for="Products.Stock" class="form-control" />
-                <span asp-validation-for="Products.Stock" class="text-danger"></span>
+                <label asp-for="Product.Stock" class="control-label"></label>
+                <input asp-for="Product.Stock" class="form-control" />
+                <span asp-validation-for="Product.Stock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.CategoryId" class="control-label"></label>
+                <input asp-for="Product.CategoryId" class="form-control" />
+                <span asp-validation-for="Product.CategoryId" class="text-danger"></span>
             </div>
 
             <div class="form-group mt-3">

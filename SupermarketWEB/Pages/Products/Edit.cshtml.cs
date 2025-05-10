@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using SupermarketWEB.Data;
 using SupermarketWEB.Models;
 
-namespace SupermarketWEB.Pages.Products
+namespace SupermarketWEB.Pages.Product
 {
     public class EditModel : PageModel
     {
@@ -15,7 +15,7 @@ namespace SupermarketWEB.Pages.Products
         }
 
         [BindProperty]
-        public Models.Products Products { get; set; } = default!;
+        public Models.Product Product { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -31,7 +31,7 @@ namespace SupermarketWEB.Pages.Products
             }
             else
             {
-                Products = product;
+                Product = product;
                 return Page();
             }
         }
@@ -43,7 +43,7 @@ namespace SupermarketWEB.Pages.Products
                 return Page();
             }
 
-            _context.Attach(Products).State = EntityState.Modified;
+            _context.Attach(Product).State = EntityState.Modified;
 
             try
             {
@@ -51,7 +51,7 @@ namespace SupermarketWEB.Pages.Products
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ProductsExists(Products.Id))
+                if (!ProductExists(Product.Id))
                 {
                     return NotFound();
                 }
@@ -64,7 +64,7 @@ namespace SupermarketWEB.Pages.Products
             return RedirectToPage("./Index");
         }
 
-        private bool ProductsExists(int id)
+        private bool ProductExists(int id)
         {
             return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
         }
